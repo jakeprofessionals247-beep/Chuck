@@ -1,0 +1,31 @@
+services:
+  - type: worker
+    name: chuck-capital-rapid-crypto-worker
+    runtime: docker
+    region: ohio
+    plan: starter
+
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: DRY_RUN
+        value: "true"
+
+      - key: POLL_INTERVAL_MS
+        value: "15000"
+
+      - key: STRATEGY_REFRESH_MS
+        value: "3600000"
+
+      - key: ROBINHOOD_API_KEY
+        sync: false
+
+      - key: ROBINHOOD_API_SECRET
+        sync: false
+
+      - key: ROBINHOOD_ACCOUNT_ID
+        sync: false
